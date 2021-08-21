@@ -1,0 +1,104 @@
+.header
+    width: 100%
+    height: 70px
+    display: flex
+    justify-content: space-between
+    align-items: center
+    border-bottom: 1px solid #000
+
+    &-rightside
+        display: flex
+        align-items: center
+
+        & nav
+            margin-right: 30px
+            text-transform: uppercase
+            letter-spacing: 0.05em
+            font-size: 0.9em
+
+            & a
+                display: inline-block
+                margin: 0 5px
+                padding: 0.18em 0.3em
+                position: relative
+                color: inherit
+                transition: 300ms
+
+                &::before
+                    content: ''
+                    position: absolute
+                    bottom: -1px
+                    left: 50%
+                    transform: translateX(-50%)
+                    width: 0%
+                    height: 1px
+                    background-color: #000
+                    transition: 300ms ease
+                    opacity: 0
+
+                &.active-navlink
+                    transition: 300ms ease
+                    &::before
+                        opacity: 1
+                        width: 85%                        
+
+                &:hover
+                    &::before
+                        opacity: 1
+                        width: 80%
+
+                &:first-child
+                    margin-left: 0
+                &:last-child
+                    margin-right: 0
+
+        & .change-lang
+            margin-right: 20px
+            
+            & a
+                position: relative
+                color: inherit
+
+                &:first-child
+                    margin-right: 10px
+
+        & .change-theme
+
+            & #theme-swiper
+                width: 35px
+                height: 15px
+                position: relative
+                cursor: pointer
+                display: block
+
+                &::before
+                    content: ''
+                    position: relative
+                    width: 100%
+                    height: 100%
+                    display: block
+                    background-color: #c0c0c0
+                    border: 2px solid #777
+                    border-radius: 15px
+
+                &::after
+                    content: ''
+                    position: absolute
+                    top: 0px
+                    left: 0px
+                    height: calc(100% + 0px)
+                    width: 16px
+                    display: block
+                    border-radius: 50%
+                    background-color: #6685c7
+                    transition: 200ms all
+                    border: 2px solid #2a28a0
+
+                &:checked
+                    &::before
+                        background-color: rgb(216, 216, 216)
+                    &::after
+                        left: 100%
+                        transform: translateX(-100%)
+                        background-color: rgb(226, 207, 31)
+                        border: 2px solid rgb(228, 126, 42)

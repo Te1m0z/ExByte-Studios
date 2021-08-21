@@ -1,2 +1,1 @@
-# exbyte-studios
-web app for game dev company
+# web app for game dev company

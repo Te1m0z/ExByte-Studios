@@ -1,0 +1,42 @@
+@import './vars.sass'
+    
+*,
+*::before,
+*::after
+    box-sizing: border-box
+    margin: 0
+    padding: 0
+
+img
+    display: block
+    max-width: 100%
+
+input, button, textarea
+    border: none
+    outline: none
+
+.container
+    width: 100%
+    max-width: 1000px
+    margin: 0 auto
+    padding: 0 10px
+
+body
+    font-size: 16px
+    min-width: 320px
+    font-family: sans-serif
+
+    &.light
+        background-color: $light-background
+        color: $light-text
+        
+    &.dark
+        background-color: $dark-background
+        color: $dark-text
+
+        & a::before
+            background-color: #fff
+
+a
+    transition: 300ms
+    text-decoration: none
