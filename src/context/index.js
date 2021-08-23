@@ -1,1 +1,4 @@
-export {SettingsProvider, SettingsConsumer, SettingsContext} from './SettingsContext.js';
+export {
+    SettingsProvider,
+    SettingsContext
+} from './SettingsContext.js';

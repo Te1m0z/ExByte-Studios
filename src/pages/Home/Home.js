@@ -1,6 +1,12 @@
+import { Intro } from './Intro/Intro.js';
+
+import './home.sass';
+
 export function Home() {
 
     return (
-        <h1>Home page</h1>
+        <>
+            <Intro />
+        </>
     )
 }

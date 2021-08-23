@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { App } from './App';
+import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { SettingsProvider } from './context/SettingsContext.js';
-// import './vars.sass';
 import './global.sass';
+import i18n from './i18n.js';
 
 const defaultSettings = {
   theme: localStorage.getItem('theme') || 'light'

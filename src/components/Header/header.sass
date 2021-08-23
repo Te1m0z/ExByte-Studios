@@ -1,3 +1,5 @@
+body.dark header
+    border-color: #fff
 .header
     width: 100%
     height: 70px
@@ -5,6 +7,7 @@
     justify-content: space-between
     align-items: center
     border-bottom: 1px solid #000
+    // transition: 500ms
 
     &-rightside
         display: flex
@@ -22,7 +25,6 @@
                 padding: 0.18em 0.3em
                 position: relative
                 color: inherit
-                transition: 300ms
 
                 &::before
                     content: ''
@@ -33,20 +35,17 @@
                     width: 0%
                     height: 1px
                     background-color: #000
-                    transition: 300ms ease
+                    transition: width 300ms ease, opacity 300ms ease
                     opacity: 0
 
                 &.active-navlink
-                    transition: 300ms ease
                     &::before
                         opacity: 1
                         width: 85%                        
-
                 &:hover
                     &::before
                         opacity: 1
-                        width: 80%
-
+                        width: 70%
                 &:first-child
                     margin-left: 0
                 &:last-child
@@ -55,9 +54,17 @@
         & .change-lang
             margin-right: 20px
             
-            & a
+            & button
                 position: relative
                 color: inherit
+                cursor: pointer
+                padding: 0 3px
+                border: 1px solid #000
+                background: #ccc
+
+                &[theme='dark']
+                    background: #000
+                    border: 1px solid #fff
 
                 &:first-child
                     margin-right: 10px

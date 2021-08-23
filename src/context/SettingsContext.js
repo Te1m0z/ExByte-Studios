@@ -24,7 +24,3 @@ export const SettingsProvider = ({settings, children}) => {
 	);
 
 };
-
-export const SettingsConsumer = SettingsContext.Consumer;
-
-// export SettingsContext;

@@ -6,10 +6,9 @@ import './header.sass';
 
 export function Header() {
 
-
     return (
         <header className='header'>
-            <div className='logo'>logo</div>
+            <div className='logo'>Logotype</div>
             <div className='header-rightside'>
                 <Menu />
                 <LangSwiper />

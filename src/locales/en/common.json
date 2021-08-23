@@ -1,0 +1,10 @@
+{
+    "header": {
+        "menu": {
+            "home": "Home",
+            "gallery": "Gallery",
+            "games": "Games",
+            "careers": "Careers"
+        }
+    }
+}

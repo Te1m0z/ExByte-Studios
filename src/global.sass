@@ -7,7 +7,7 @@
     margin: 0
     padding: 0
 
-img
+img, video
     display: block
     max-width: 100%
 
@@ -25,18 +25,18 @@ body
     font-size: 16px
     min-width: 320px
     font-family: sans-serif
+    height: 3000px
 
     &.light
-        background-color: $light-background
+        background-color: $light-bg-color
         color: $light-text
         
     &.dark
-        background-color: $dark-background
+        background-color: $dark-bg-color
         color: $dark-text
 
         & a::before
-            background-color: #fff
+            background-color: $dark-link-hover
 
 a
-    transition: 300ms
     text-decoration: none

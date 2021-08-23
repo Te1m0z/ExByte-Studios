@@ -1,5 +1,3 @@
-export { Header } from './Header/index.js';
-
-export { LangSwiper } from './Header/index.js';
-export { ThemeSwiper } from './Header/index.js';
-export { Menu } from './Header/index.js';
+export { Header } from './Header/Header.js';
+export { Cards } from './Cards/Cards.js';
+export { Footer } from './Footer/Footer.js';

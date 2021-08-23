@@ -9,9 +9,12 @@ import {
   Gallery
 } from './pages/index.js';
 
-import { Header } from './components/index.js';
+import {
+  Header,
+  Footer
+} from './components/index.js';
 
-export function App() {
+function App() {
 
   return (
     <Router>
@@ -21,7 +24,10 @@ export function App() {
           <Route exact path='/' component={Home} />
           <Route path='/gallery' component={Gallery} />
         </Switch>
+        <Footer />
       </div>
     </Router>
   );
 }
+
+export default App;
