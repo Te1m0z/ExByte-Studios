@@ -1,1 +1,1 @@
-web app for game dev company
+Web app for game dev company
