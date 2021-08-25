@@ -6,7 +6,8 @@ import {
 
 import {
   Home,
-  Gallery
+  Gallery,
+  Register
 } from './pages/index.js';
 
 import {
@@ -22,7 +23,8 @@ function App() {
         <Header />
         <Switch>
           <Route exact path='/' component={Home} />
-          <Route path='/gallery' component={Gallery} />
+          <Route exact path='/gallery' component={Gallery} />
+          <Route exact path='/register' component={Register} />
         </Switch>
         <Footer />
       </div>

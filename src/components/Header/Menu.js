@@ -23,17 +23,24 @@ export function Menu() {
             </NavLink>
 
             <NavLink
-                to='/careers'
-                activeClassName='active-navlink'
-            >
-                {t('header.menu.careers')}
-            </NavLink>
-
-            <NavLink
                 to='/gallery'
                 activeClassName='active-navlink'
             >
                 {t('header.menu.gallery')}
+            </NavLink>
+
+            <NavLink
+                to='/register'
+                activeClassName='active-navlink'
+            >
+                Register
+            </NavLink>
+
+            <NavLink
+                to='/login'
+                activeClassName='active-navlink'
+            >
+                Login
             </NavLink>
         </nav>
     )
