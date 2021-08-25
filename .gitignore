@@ -1,5 +1,5 @@
-node_modules/
-dist/
-package-lock.json
-.env
-public/assets
+client/node_modules/
+client/dist/
+client/package-lock.json
+client/.env
+client/public/assets

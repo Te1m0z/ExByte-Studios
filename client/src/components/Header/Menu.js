@@ -1,9 +1,14 @@
 import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { useRecoilState } from 'recoil';
+
+import { authorized } from '../../state/index.js';
 
 export function Menu() {
 
     const [ t ] = useTranslation('common');
+
+    const [auth, setAuth] = useRecoilState(authorized);
 
     return (
         <nav>
@@ -29,19 +34,30 @@ export function Menu() {
                 {t('header.menu.gallery')}
             </NavLink>
 
-            <NavLink
-                to='/register'
-                activeClassName='active-navlink'
-            >
-                Register
-            </NavLink>
-
-            <NavLink
-                to='/login'
-                activeClassName='active-navlink'
-            >
-                Login
-            </NavLink>
+            { !auth &&
+                <NavLink
+                    to='/register'
+                    activeClassName='active-navlink'
+                >
+                    Register
+                </NavLink>
+            }
+            { !auth &&
+                <NavLink
+                    to='/login'
+                    activeClassName='active-navlink'
+                >
+                    Login
+                </NavLink>
+            }
+            { auth &&
+                <NavLink
+                    to='/profile'
+                    activeClassName='active-navlink'
+                >
+                    Profile
+                </NavLink>
+            }
         </nav>
     )
 }

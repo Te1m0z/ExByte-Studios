@@ -7,10 +7,10 @@ class User {
 
     // свойства объекта
     public $id;
-    public $name;
-    public $surname;
+    public $login;
     public $email;
     public $password;
+    public $role;
     public $created;
 
     public function __construct($db) {
@@ -18,10 +18,9 @@ class User {
     }
 
     public function clearData() {
-        $this->name = htmlspecialchars(strip_tags($this->name));
-        $this->surname = htmlspecialchars(strip_tags($this->surname));
-        $this->email = htmlspecialchars(strip_tags($this->email));
-        $this->password = htmlspecialchars(strip_tags($this->password));
+        $this->login    = trim(strip_tags($this->login));
+        $this->email    = trim(strip_tags($this->email));
+        $this->password = trim(strip_tags($this->password));
     }
 
     public function exist_id() {
@@ -60,24 +59,23 @@ class User {
     // создание пользователя
     function create() {
 
-        $sql = "INSERT INTO " . $this->table .
+        $sql = "INSERT INTO "
+                . $this->table .
                 " SET 
-                name = :name,
-                surname = :surname,
+                login = :login,
                 email = :email,
                 password = :password";
 
-        // подготовка
         $stmt = $this->conn->prepare($sql);
 
-        $stmt->bindParam(":name", $this->name);
-        $stmt->bindParam(":surname", $this->surname);
-        $stmt->bindParam(":email", $this->email);
+        $stmt->bindParam(":login",    $this->login);
+        $stmt->bindParam(":email",    $this->email);
         $stmt->bindParam(":password", $this->password);
 
-        // выполняем запрос если успешно -> функция вернет true
-        if($stmt->execute()) {
-            $this->id = $this->conn->lastInsertId();
+        $inserted = $stmt->execute();
+
+        if ($inserted) {
+
             return true;
         }
 
@@ -88,16 +86,16 @@ class User {
 
         $sql = "SELECT
                 id,
-                name,
-                surname,
-                created
+                login,
+                role,
+                created,
                 FROM " . $this->table . 
                 " WHERE email = :email AND
                 password = :password";
 
         $stmt = $this->conn->prepare($sql);
 
-        $stmt->bindParam(':email', $this->email);
+        $stmt->bindParam(':email',    $this->email);
         $stmt->bindParam(':password', $this->password);
 
         $stmt->execute();
@@ -107,9 +105,9 @@ class User {
         if ($num > 0) {
             $row = $stmt->fetchAll();
 
-            $this->id = $row['id'];
-            $this->name = $row['name'];
-            $this->surname = $row['surname'];
+            $this->id      = $row['id'];
+            $this->login   = $row['login'];
+            $this->role    = $row['role'];
             $this->created = $row['created'];
 
             return true;

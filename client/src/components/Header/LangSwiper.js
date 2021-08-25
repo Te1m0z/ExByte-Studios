@@ -9,8 +9,6 @@ export function LangSwiper() {
     }
 
     const { settings } = useSettings();
-
-    console.log(settings)
     
     return (
         <div className='change-lang'>

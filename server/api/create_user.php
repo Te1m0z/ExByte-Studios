@@ -3,31 +3,33 @@ header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: POST');
 header('Content-type: application/json; charset=UTF-8');
 header("Access-Control-Max-Age: 3600");
-header("Access-Control-Allow-Headers: Content-Type, Origin, Authorization");
+header("Access-Control-Allow-Headers: Content-Type, Origin, Access");
 
 // includes
 include_once 'config/Database.php';
 include_once 'models/User.php';
 include_once 'models/Session.php';
 
+// if request is not POST method then die
 if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     die();
 }
 
 $database = new Database();
+// instance of db connect
 $db = $database->getConnection();
 
-$user    = new User($db);
-// $session = new Session($db);
+$user     = new User($db);
+$session  = new Session($db);
 
-$name     = $_POST['name'];
-$surname  = $_POST['surname'];
+// create vars with post info
+$login    = $_POST['login'];
 $email    = $_POST['email'];
 $password = $_POST['password'];
 
+// if post fields is not set
 if (
-    empty($name) or
-    empty($surname) or
+    empty($login) or
     empty($email) or
     empty($password)
 ) {
@@ -39,60 +41,63 @@ if (
     die();
 }
 
-// данные формы
-$user->name     = $name;
-$user->surname  = $surname;
+// fill classes instances
+$user->login    = $login;
 $user->email    = $email;
 $user->password = $password;
 
-// очищаем данные от html тегов
+// clear fields from spaces and HTML tags
 $user->clearData();
 
-// если такой email занят
-$email_exists = $user->exist_email();
+// check if email is not taken
+if ($user->exist_email()) {
 
-if ($email_exists) {
     http_response_code(400);
     echo json_encode([
         'status' => false,
-        'message' => 'this email already exists'
+        'message' => 'This email already exists'
     ]);
     die();
 }
 
-// если email свободен
-$created   = $user->create();
+$created_user        = $user->create();
 
-$session->user_id = $user->id;
-$session->user_email = $email;
+$session->user_id    = $user->id;
+$session->user_email = $user->email;
+
+$generated_session   = $session->generate();
+
 $session->cleanData();
+$user   ->cleanData();
 
-$generated = $session->generate();
+$logged_user         = $user->login();
 
-if ($created AND $generated) {
+if ($created_user AND $generated_session) {
+
     http_response_code(201);
 
-    setcookie('session', 'test name is', [
-        'expires' => 7200,
-        'path' => '/registration',
-        'domain' => '127.0.20.20',
+    $cookie_params = [
+        'expires' => 0,
+        'path' => '/',
+        'domain' => 'te1m0z.site',
         'secure' => true,
-        'httponly' => false,
-        'samesite' => 'Lax'
-    ]);
+        'httponly' => true
+    ];
+
+    // cookies for session
+    // setcookie('session', $session->session, $cookie_params);
+    // cookie for user's role
+    // setcookie('role', $user->role, $cookie_params);
 
     echo json_encode([
         'status'  => true,
-        'message' => 'User created',
+        'message' => 'User successfully created',
         'data' => [
             'id'      => $user->id,
-            'name'    => $user->name,
-            'surname' => $user->surname,
+            'login'   => $user->login,
             'email'   => $user->email,
-        ],
-        'session' => [
-            'id'   => $session->id,
-            'hash' => $session->session
+            'created' => $user->created,
+            'status'  => $user->role
         ]
     ]);
     die();
@@ -102,6 +107,6 @@ if ($created AND $generated) {
 http_response_code(400);
 echo json_encode([
     'status' => false,
-    'message' => 'Oops some error'
+    'message' => 'Oops some error :('
 ]);
 die();
