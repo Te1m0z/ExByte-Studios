@@ -1,13 +1,13 @@
-body.dark header
-    border-color: #fff
 .header
     width: 100%
     height: 70px
-    display: flex
-    justify-content: space-between
-    align-items: center
     border-bottom: 1px solid #000
-    // transition: 500ms
+
+    & .container
+        height: 100%
+        display: flex
+        justify-content: space-between
+        align-items: center
 
     &-rightside
         display: flex
@@ -41,7 +41,7 @@ body.dark header
                 &.active-navlink
                     &::before
                         opacity: 1
-                        width: 85%                        
+                        width: 85%
                 &:hover
                     &::before
                         opacity: 1
@@ -53,7 +53,7 @@ body.dark header
 
         & .change-lang
             margin-right: 20px
-            
+
             & button
                 position: relative
                 color: inherit

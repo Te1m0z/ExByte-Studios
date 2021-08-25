@@ -8,11 +8,13 @@ export function Header() {
 
     return (
         <header className='header'>
-            <div className='logo'>Logotype</div>
-            <div className='header-rightside'>
-                <Menu />
-                <LangSwiper />
-                <ThemeSwiper />
+            <div className='container'>
+                <div className='logo'>Logotype</div>
+                <div className='header-rightside'>
+                    <Menu />
+                    <LangSwiper />
+                    <ThemeSwiper />
+                </div>
             </div>
         </header>
     )

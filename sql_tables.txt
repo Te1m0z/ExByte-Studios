@@ -1,0 +1,34 @@
+create table users
+(
+`id` int(11) not null primary key auto_increment,
+`login` varchar(256) not null,
+`password` varchar(256) not null,
+`email` varchar(256) not null,
+`role` varchar(256) not null default 'authorized',
+`created` timestamp not null default current_timestamp,
+key (id),
+key(email)
+);
+
+create table documents
+(
+`id` int(11) not null primary key auto_increment,
+`user_id` int(11) not null,
+`user_email` varchar(256) not null,
+`data` json not null,
+`created` datetime not null default current_timestamp,
+constraint documents_fr
+foreign key (user_id) references users (id) on update cascade,
+foreign key (user_email) references users (email) on update cascade
+);
+
+create table sessions
+(
+`id` int(11) not null primary key auto_increment,
+`user_id` int(11) not null,
+`user_email` varchar(256) not null,
+`session` varchar(256) not null,
+constraint sessions_fk
+foreign key (user_id) references users (id) on update cascade,
+foreign key (user_email) references users (email) on update cascade
+);

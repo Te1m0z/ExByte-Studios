@@ -1,5 +1,6 @@
-export function Footer() {
+import './footer.sass';
 
+export function Footer() {
 
     return (
         <footer>

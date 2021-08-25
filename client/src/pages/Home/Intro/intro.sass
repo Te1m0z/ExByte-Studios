@@ -1,0 +1,136 @@
+@import '../../../vars.sass'
+
+.intro-sec
+    display: flex
+    align-items: center
+    height: calc(100vh - 70px)
+    &__title
+        width: 50%
+
+        & h1
+            position: relative
+            color: #fff
+            display: inline-block
+            font-size: 80px
+            // font-weight: 800
+
+            & .main
+                color: #000
+                z-index: 10
+
+            & .bg
+                position: absolute
+                top: 0
+                left: 0
+                z-index: 3
+                &:nth-child(2)
+                    z-index: 3
+                    color: #db1f67
+                    animation: glitch1 1s ease infinite
+                &:nth-child(3)
+                    z-index: 2
+                    color: #43d317
+                    animation: glitch2 1.5s ease infinite
+                &:nth-child(4)
+                    z-index: 2
+                    color: #1326d8
+                    animation: glitch3 1s ease infinite
+
+@keyframes glitch1
+    0%
+        opacity: 0.7
+        transfrom: skew(0, 0) translate(0, 0)
+
+    10%
+        opacity: 0.3
+
+    20%
+        opacity: 1
+        transform: skew(-2deg, 1deg) translate(3px, 0px)
+
+    40%
+        opacity: 0.7
+
+    50%
+        opacity: 0.5
+        transfrom: skew(1deg, 0)
+
+    60%
+        opacity: 0.7
+
+    70%
+        opacity: 1
+        transform: skew(2deg, -1deg) translate(2px, 0px)
+
+    80%
+        opacity: 0.7
+
+    100%
+        opacity: 0.3
+        transform: skew(0, 0) translate(0, 0)
+
+@keyframes glitch2
+    0%
+        opacity: 0.4
+        transfrom: skew(0, 0) translate(0, 0)
+
+    10%
+        opacity: 0.6
+
+    20%
+        opacity: 1
+        transform: skew(2deg, -1deg) translate(3px, -1px)
+
+    40%
+        opacity: 0.8
+
+    50%
+        opacity: 0.7
+        transfrom: skew(-1deg, 1deg)
+
+    60%
+        opacity: 0.8
+
+    70%
+        opacity: 1
+        transform: skew(-1deg, 1deg) translate(-2px, -1px)
+
+    80%
+        opacity: 0.7
+
+    100%
+        opacity: 0.3
+        transform: skew(0, 0) translate(0, 0)
+
+@keyframes glitch3
+    0%
+        opacity: 1
+        transfrom: skew(0, 0) translate(0, 0)
+
+    10%
+        opacity: 0.6
+
+    20%
+        opacity: 0.7
+        transform: skew(-1deg, 1deg) translate(3px, 2px)
+
+    40%
+        opacity: 0.5
+
+    50%
+        opacity: 0.3
+        transfrom: skew(1deg, -1deg)
+
+    60%
+        opacity: 0.3
+
+    70%
+        opacity: 1
+        transform: skew(-2deg, -1deg) translate(-2px, 1px)
+
+    80%
+        opacity: 0.7
+
+    100%
+        opacity: 0.3
+        transform: skew(0, 0) translate(0, 0)

@@ -22,12 +22,6 @@ export function Home() {
     return (
         <>
             <Intro />
-            <form onSubmit={fetchData}>
-                <input type='text' name='login' placeholder='login' />
-                <input type='text' name='mail' placeholder='mail' />
-                <input type='password' name='password' placeholder='password' />
-                <button type='submit'>go</button>
-            </form>
         </>
     )
 }

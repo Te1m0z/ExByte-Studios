@@ -10,10 +10,10 @@ export function Intro() {
         <section className='intro-sec'>
             <div className='intro-sec__title'>
                 <h1>
-                    Exbyte Studios
-                    <span>Exbyte Studios</span>
-                    <span>Exbyte Studios</span>
-                    <span>Exbyte Studios</span>
+                    <span className='main'>Exbyte Studios</span>
+                    <span className='bg'>Exbyte Studios</span>
+                    <span className='bg'>Exbyte Studios</span>
+                    <span className='bg'>Exbyte Studios</span>
                 </h1>
             </div>
             <Cards />

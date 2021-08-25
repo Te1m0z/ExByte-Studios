@@ -19,15 +19,15 @@ function App() {
 
   return (
     <Router>
+      <Header />
       <div className='container'>
-        <Header />
         <Switch>
           <Route exact path='/' component={Home} />
           <Route exact path='/gallery' component={Gallery} />
           <Route exact path='/register' component={Register} />
         </Switch>
-        <Footer />
       </div>
+      <Footer />
     </Router>
   );
 }
