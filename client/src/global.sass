@@ -21,10 +21,17 @@ input, button, textarea
     margin: 0 auto
     padding: 0 10px
 
+#root
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+    min-height: 100vh
+
 body
     font-size: 16px
     min-width: 320px
     font-family: sans-serif
+    overflow-x: hidden
 
     &.light
         background-color: $light-bg-color

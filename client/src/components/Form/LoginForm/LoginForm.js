@@ -31,7 +31,7 @@ export function LoginForm() {
         <form onSubmit={fetchLogin} className='login-form'>
 
             <div className='field'>
-                <label htmlFor='login-login'>Логин</label>
+                <label htmlFor='login-login'>Login</label>
                 <input type='text' name='login' id='login-login' />
             </div>
 

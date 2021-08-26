@@ -8,13 +8,14 @@
         display: flex
         justify-content: space-between
         align-items: center
+        position: relative
 
     &-rightside
         display: flex
         align-items: center
 
         & nav
-            margin-right: 30px
+            margin-right: 10px
             text-transform: uppercase
             letter-spacing: 0.05em
             font-size: 0.9em
@@ -52,7 +53,6 @@
                     margin-right: 0
 
         & .change-lang
-            margin-right: 20px
 
             & button
                 position: relative
@@ -70,6 +70,7 @@
                     margin-right: 10px
 
         & .change-theme
+            margin-right: 14px
 
             & #theme-swiper
                 width: 35px
@@ -109,3 +110,46 @@
                         transform: translateX(-100%)
                         background-color: rgb(226, 207, 31)
                         border: 2px solid rgb(228, 126, 42)
+        
+        & .style-block
+            // position: relative
+
+            & .style-popup
+                width: 170px
+                height: 70px
+                background: #ccc
+                position: absolute
+                right: 5px
+                transform: translateY(100%)
+                z-index: 4
+                animation: opening 250ms ease forwards
+                display: flex
+                flex-flow: column nowrap
+                justify-content: space-between
+                padding: 10px
+
+                &::after
+                    content: ''
+                    position: absolute
+                    top: -3px
+                    right: 1px
+                    width: 20px
+                    height: 20px
+                    transform: rotate(-45deg)
+                    background-color: #ccc
+                    z-index: 1
+
+                & div
+                    display: flex
+                    justify-content: space-between
+
+                    & span
+                        margin-right: 0px
+
+@keyframes opening
+    0%
+        opacity: 0
+        bottom: -10px
+    100%
+        opacity: 1
+        bottom: 5px

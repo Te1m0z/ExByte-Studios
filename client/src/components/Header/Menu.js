@@ -13,14 +13,15 @@ export function Menu() {
     return (
         <nav>
             <NavLink
-                to='/'
                 exact
+                to='/'
                 activeClassName='active-navlink'
             >
                 {t('header.menu.home')}
             </NavLink>
 
             <NavLink
+                exact
                 to='/games'
                 activeClassName='active-navlink'
             >
@@ -28,6 +29,7 @@ export function Menu() {
             </NavLink>
 
             <NavLink
+                exact
                 to='/gallery'
                 activeClassName='active-navlink'
             >
@@ -36,22 +38,17 @@ export function Menu() {
 
             { !auth &&
                 <NavLink
-                    to='/register'
-                    activeClassName='active-navlink'
-                >
-                    Register
-                </NavLink>
-            }
-            { !auth &&
-                <NavLink
+                    exact
                     to='/login'
                     activeClassName='active-navlink'
                 >
-                    Login
+                    Account
                 </NavLink>
             }
+            
             { auth &&
                 <NavLink
+                    exact
                     to='/profile'
                     activeClassName='active-navlink'
                 >

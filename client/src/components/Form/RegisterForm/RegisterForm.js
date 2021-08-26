@@ -32,7 +32,7 @@ export function RegisterForm() {
         <form onSubmit={fetchRegister} className='register-form'>
 
             <div className='field'>
-                <label htmlFor='register-login'>Логин</label>
+                <label htmlFor='register-login'>Login</label>
                 <input type='text' name='login' id='register-login' />
             </div>
 
@@ -43,6 +43,11 @@ export function RegisterForm() {
 
             <div className='field'>
                 <label htmlFor='register-password'>Password</label>
+                <input type='password' name='password' id='register-password' />
+            </div>
+
+            <div className='field'>
+                <label htmlFor='register-password'>Repeat password</label>
                 <input type='password' name='password' id='register-password' />
             </div>
 
