@@ -14,13 +14,10 @@ const defaultSettings = {
 document.body.classList.add(defaultSettings.theme);
 window.addEventListener('storage', e => {
 
-  console.log(e.key);
-
   if (e.key === 'data') {
     window.localStorage.removeItem('data');
     document.location.reload();
   }
-
 });
 
 ReactDOM.render(

@@ -60,17 +60,15 @@ if ($user->exist_email()) {
     die();
 }
 
-$created_user        = $user->create();
+$created_user        = $user->create(); // true
+$logged_user         = $user->login();
 
 $session->user_id    = $user->id;
 $session->user_email = $user->email;
 
-$generated_session   = $session->generate();
-
 $session->cleanData();
-$user   ->cleanData();
 
-$logged_user         = $user->login();
+$generated_session   = $session->generate(); // true
 
 if ($created_user AND $generated_session) {
 
@@ -98,7 +96,8 @@ if ($created_user AND $generated_session) {
             'email'   => $user->email,
             'created' => $user->created,
             'status'  => $user->role
-        ]
+        ],
+        'session' => $session->session
     ]);
     die();
 }

@@ -51,7 +51,7 @@ class Session {
         $stmt->bindParam(":user_id",    $this->user_id);
         $stmt->bindParam(":user_email", $this->user_email);
 
-        $mutation = $this->user_id . $this->user_email . time();
+        $mutation = $this->user_id . '_' . $this->user_email . time();
         $session_hashed = hash('sha1', $mutation);
 
         $stmt->bindParam(":session", $session_hashed);

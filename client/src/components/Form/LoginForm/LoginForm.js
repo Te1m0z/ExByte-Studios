@@ -1,13 +1,13 @@
 import { useRecoilState } from 'recoil';
-import './registerform.sass';
 import { authorized, editor } from '../../../state/index.js';
+import './loginform.sass';
 
-export function RegisterForm() {
+export function LoginForm() {
 
     const [auth, setAuth] = useRecoilState(authorized);
     const [edit, setEdit] = useRecoilState(editor);
 
-    const fetchRegister = async e => {
+    const fetchLogin = async e => {
         e.preventDefault();
 
         var data = new FormData(e.target);
@@ -21,7 +21,6 @@ export function RegisterForm() {
 
         if (res.status) {
             localStorage.setItem('data', JSON.stringify(res.data));
-            localStorage.setItem('session', res.session);
             setAuth(true);
         } else if (res.data.status === 'authorized') {
             setEdit(true);
@@ -29,24 +28,19 @@ export function RegisterForm() {
     }
 
     return (
-        <form onSubmit={fetchRegister} className='register-form'>
+        <form onSubmit={fetchLogin} className='login-form'>
 
             <div className='field'>
-                <label htmlFor='register-login'>Логин</label>
-                <input type='text' name='login' id='register-login' />
+                <label htmlFor='login-login'>Логин</label>
+                <input type='text' name='login' id='login-login' />
             </div>
 
             <div className='field'>
-                <label htmlFor='register-email'>Email</label>
-                <input type='text' name='email' id='register-email' />
+                <label htmlFor='login-password'>Password</label>
+                <input type='password' name='password' id='login-password' />
             </div>
 
-            <div className='field'>
-                <label htmlFor='register-password'>Password</label>
-                <input type='password' name='password' id='register-password' />
-            </div>
-
-            <button type='submit'>Create Account</button>
+            <button type='submit'>Login</button>
         </form>
     )
 }

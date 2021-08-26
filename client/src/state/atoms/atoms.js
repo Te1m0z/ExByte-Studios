@@ -1,21 +1,21 @@
 import { atom } from 'recoil';
 
-let data = localStorage.getItem('data');
 let status = false;
 
-if (data) {
-    data = JSON.parse(data);
-    data.status === 'authorized' ? status = true : status = false;
-}
+if (localStorage.getItem('data')) {
 
-console.log(data);
+    let data = JSON.parse(localStorage.getItem('data'));
+
+    (data.status === 'authorized') ? status = true : status = false;
+
+} else status = false;
 
 export const authorized = atom({
-    key: 'Authorized',
+    key: 'authorized',
     default: status
 });
 
-export const editing = atom({
-    key: 'Editing',
-    default: true
+export const editor = atom({
+    key: 'editor',
+    default: false
 });

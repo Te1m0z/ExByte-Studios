@@ -1,4 +1,6 @@
-export function Edit({ url, data }) {
+import './edit.sass';
+
+export function EditForm({ url, data }) {
 
     const send = async e => {
         e.preventDefault();
@@ -8,13 +10,14 @@ export function Edit({ url, data }) {
     }
 
     return (
-        <form onSubmit={send}>
+        <form onSubmit={send} id='form-edit'>
             {data.map((item, idx) => (
                 <input
                     key={idx}
                     type='text'
                     name={item.name}
                     placeholder={item.name}
+                    required
                 />
             ))}
             <button type='submit'>Done</button>

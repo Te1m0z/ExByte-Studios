@@ -29,7 +29,7 @@ i18n
         interpolation: {
             escapeValue: false
         },
-        debug: true,
+        debug: false,
         initImmediate: false
     });
 

@@ -83,30 +83,23 @@ class User {
     }
 
     function login() {
-
-        $sql = "SELECT
-                id,
-                login,
-                role,
-                created,
-                FROM " . $this->table . 
-                " WHERE email = :email AND
-                password = :password";
+        
+        $sql = "SELECT id, email, role, created FROM " . $this->table . " WHERE login = ? AND password = ? LIMIT 1";
 
         $stmt = $this->conn->prepare($sql);
 
-        $stmt->bindParam(':email',    $this->email);
-        $stmt->bindParam(':password', $this->password);
+        $stmt->bindParam(1, $this->login);
+        $stmt->bindParam(2, $this->password);
 
         $stmt->execute();
 
         $num = $stmt->rowCount();
 
         if ($num > 0) {
-            $row = $stmt->fetchAll();
+            $row = $stmt->fetch();
 
             $this->id      = $row['id'];
-            $this->login   = $row['login'];
+            $this->email   = $row['email'];
             $this->role    = $row['role'];
             $this->created = $row['created'];
 
