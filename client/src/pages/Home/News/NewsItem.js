@@ -1,11 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useRecoilValue } from 'recoil';
-import { editor } from '../../../state/index.js';
+import { authorized } from '../../../state/index.js';
 import { EditForm } from '../../../components/index.js';
 
 export function NewsItem({ title, descr }) {
 
-    const canEdit = useRecoilValue(editor);
+    const { status, role } = useRecoilValue(authorized);
     
     const [edit, setEdit] = useState(false);
 
@@ -17,9 +17,14 @@ export function NewsItem({ title, descr }) {
             <div className='news-item__body'>
                 {descr}
             </div>
-            { canEdit && <button onClick={() => setEdit(old => !old)}>Edit</button>}
 
-            {edit &&
+            {
+                status && role &&
+                <button onClick={() => setEdit(old => !old)}>Edit</button>
+            }
+
+            {
+                edit &&
                 <EditForm
                     url={'test.php'}
                     data={

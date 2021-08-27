@@ -122,11 +122,20 @@
                 right: 5px
                 transform: translateY(100%)
                 z-index: 4
-                animation: opening 250ms ease forwards
                 display: flex
                 flex-flow: column nowrap
                 justify-content: space-between
                 padding: 10px
+                transition: 250ms ease
+
+                &[data-open='false']
+                    visibility: hidden
+                    opacity: 0
+                    bottom: -10px
+                &[data-open='true']
+                    visibility: visible
+                    opacity: 1
+                    bottom: 5px
 
                 &::after
                     content: ''

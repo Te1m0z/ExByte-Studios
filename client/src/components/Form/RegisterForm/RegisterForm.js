@@ -1,11 +1,12 @@
 import { useRecoilState } from 'recoil';
 import './registerform.sass';
-import { authorized, editor } from '../../../state/index.js';
+import { authorized } from '../../../state/index.js';
 
 export function RegisterForm() {
 
     const [auth, setAuth] = useRecoilState(authorized);
-    const [edit, setEdit] = useRecoilState(editor);
+
+    console.log(auth);
 
     const fetchRegister = async e => {
         e.preventDefault();
@@ -23,8 +24,6 @@ export function RegisterForm() {
             localStorage.setItem('data', JSON.stringify(res.data));
             localStorage.setItem('session', res.session);
             setAuth(true);
-        } else if (res.data.status === 'authorized') {
-            setEdit(true);
         }
     }
 

@@ -11,19 +11,16 @@ export function StyleButton() {
     return (
         <div className='style-block'>
             <input type='checkbox' onChange={changed} />
-            {
-                open &&
-                <div className='style-popup'>
-                    <div>
-                        <span>Theme:</span>
-                        <ThemeSwiper />
-                    </div>
-                    <div>
-                        <span>Language:</span>
-                        <LangSwiper />
-                    </div>
+            <div className='style-popup' data-open={open ? true : false}>
+                <div>
+                    <span>Theme:</span>
+                    <ThemeSwiper />
                 </div>
-            }
+                <div>
+                    <span>Language:</span>
+                    <LangSwiper />
+                </div>
+            </div>
         </div>
     )
 }

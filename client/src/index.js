@@ -12,6 +12,7 @@ const defaultSettings = {
 };
 
 document.body.classList.add(defaultSettings.theme);
+
 window.addEventListener('storage', e => {
 
   if (e.key === 'data') {

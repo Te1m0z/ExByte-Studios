@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { useRecoilState } from 'recoil';
+import { useRecoilValue } from 'recoil';
 
 import { authorized } from '../../state/index.js';
 
@@ -8,7 +8,7 @@ export function Menu() {
 
     const [ t ] = useTranslation('common');
 
-    const [auth, setAuth] = useRecoilState(authorized);
+    const { status } = useRecoilValue(authorized);
 
     return (
         <nav>
@@ -36,7 +36,7 @@ export function Menu() {
                 {t('header.menu.gallery')}
             </NavLink>
 
-            { !auth &&
+            { !status &&
                 <NavLink
                     exact
                     to='/login'
@@ -46,7 +46,7 @@ export function Menu() {
                 </NavLink>
             }
             
-            { auth &&
+            { status &&
                 <NavLink
                     exact
                     to='/profile'
