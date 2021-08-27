@@ -6,9 +6,7 @@ export function StyleButton() {
 
     const [open, setOpen] = useState(false);
 
-
     const changed = () => setOpen(old => !old);
-
 
     return (
         <div className='style-block'>
